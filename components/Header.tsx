@@ -25,13 +25,13 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-lg">
       <div className="container mx-auto px-4">
         {/* Top bar */}
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-gray-900 hover:text-blue-600 transition">
-            eFront
+          <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-purple-600 hover:to-blue-600 transition-all duration-300">
+            ✨ eFront
           </Link>
 
           {/* Desktop Search */}
@@ -41,30 +41,30 @@ export default function Header() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search products..."
-                className="w-full px-4 py-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Search for products, brands..."
+                className="w-full px-4 py-3 pl-12 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm hover:shadow-md"
               />
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
             </div>
           </form>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
-            <Link href="/shop" className="text-gray-700 hover:text-blue-600 transition">
+            <Link href="/shop" className="text-gray-700 hover:text-blue-600 transition font-medium">
               Shop
             </Link>
-            <Link href="/wishlist" className="relative text-gray-700 hover:text-blue-600 transition">
-              <Heart className="h-6 w-6" />
+            <Link href="/wishlist" className="relative text-gray-700 hover:text-blue-600 transition group">
+              <Heart className="h-6 w-6 group-hover:scale-110 transition-transform" />
               {wishlistItems > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center animate-pulse shadow-lg">
                   {wishlistItems}
                 </span>
               )}
             </Link>
-            <Link href="/cart" className="relative text-gray-700 hover:text-blue-600 transition">
-              <ShoppingCart className="h-6 w-6" />
+            <Link href="/cart" className="relative text-gray-700 hover:text-blue-600 transition group">
+              <ShoppingCart className="h-6 w-6 group-hover:scale-110 transition-transform" />
               {totalItems > 0 && (
-                <span className="absolute -top-2 -right-2 bg-blue-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center animate-pulse shadow-lg">
                   {totalItems}
                 </span>
               )}
@@ -73,18 +73,18 @@ export default function Header() {
               <div className="relative group">
                 <button className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition">
                   <User className="h-6 w-6" />
-                  <span className="text-sm">{user?.name}</span>
+                  <span className="text-sm font-medium">{user?.name}</span>
                 </button>
-                <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-                  <Link href="/account" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all transform group-hover:translate-y-1">
+                  <Link href="/account" className="block px-4 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 rounded-t-xl transition">
                     My Account
                   </Link>
-                  <Link href="/account/orders" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                  <Link href="/account/orders" className="block px-4 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition">
                     Orders
                   </Link>
                   <button
                     onClick={logout}
-                    className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
+                    className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 rounded-b-xl transition"
                   >
                     Logout
                   </button>
@@ -92,7 +92,7 @@ export default function Header() {
               </div>
             ) : (
               <Link href="/account/login" className="text-gray-700 hover:text-blue-600 transition">
-                <User className="h-6 w-6" />
+                <User className="h-6 w-6 hover:scale-110 transition-transform" />
               </Link>
             )}
           </nav>
